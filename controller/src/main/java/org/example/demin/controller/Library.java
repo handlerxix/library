@@ -1,8 +1,8 @@
 package org.example.demin.controller;
 
 import lombok.Getter;
-import org.example.models.Author;
-import org.example.models.Book;
+import org.example.demin.models.Author;
+import org.example.demin.models.Book;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
