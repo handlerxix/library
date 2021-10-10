@@ -1,6 +1,5 @@
 plugins {
     java
-    application
 }
 
 group = "org.example.demin"
