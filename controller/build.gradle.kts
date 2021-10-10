@@ -2,7 +2,7 @@ plugins {
     java
 }
 
-group = "org.example.demin"
+group = "org.example.demin.controller"
 version = "1.0-SNAPSHOT"
 
 repositories {
