@@ -2,7 +2,7 @@ plugins {
     java
 }
 
-group = "org.example"
+group = "org.example.demin.controller"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -10,10 +10,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    implementation(project(":models"))
+    implementation("com.google.code.gson:gson:2.8.8")
 }
 
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
+task<JavaExec>("startApplication") {
+    standardInput = System.`in`
+    group = "launch"
+    workingDir = rootProject.projectDir
+    classpath = sourceSets["main"].runtimeClasspath
+    main = "org.example.demin.controller.ApplicationMain"
 }
