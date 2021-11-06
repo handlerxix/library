@@ -1,28 +1,18 @@
 package org.example.demin.controller;
 
-import com.google.gson.GsonBuilder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.util.Objects;
 
 public final class ApplicationMain {
-  public static void main(@NotNull String[] args) {
-    final var library = LibraryFactory.library();
-
-    System.out.println("Known authors:");
-    library.getAuthors().forEach(auth -> System.out.println(auth.getName()));
-
-    final var reader = new Scanner(System.in);
-
-    System.out.print("\nEnter author's name: ");
-    final var authorName = reader.nextLine();
-
-    final var gson = new GsonBuilder().create();
-    final var books = library.booksByAuthor(authorName);
-    if (books.isEmpty()) {
-      System.out.println("This author have no books yet.");
-      return;
-    }
-    books.forEach(book -> System.out.println(gson.toJson(book)));
+  public static void main(@NotNull String[] args) throws IOException, URISyntaxException {
+    final var path = Objects.requireNonNull(ApplicationMain.class.getClassLoader().getResource("library.json")).toURI();
+    final var library = new Library.LibraryFactory(Path.of(path).normalize().toAbsolutePath()).library(3);
+    library.printLibrary();
+    library.book(3);
+    library.printLibrary();
   }
 }

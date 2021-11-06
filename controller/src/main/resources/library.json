@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Book from Keks Ukropovish 1",
+    "authorId": 0,
+    "edition": "Some edition",
+    "publicationDate": "Dec 5, 218051295, 10:11:36 PM"
+  },
+  {
+    "name": "Book from Keks Ukropovish 2",
+    "authorId": 0,
+    "edition": "Some edition",
+    "publicationDate": "Feb 10, 28181766, 9:40:37 AM"
+  },
+  {
+    "name": "Book from Keks Ukropovish 3",
+    "authorId": 0,
+    "edition": "Some edition",
+    "publicationDate": "Nov 12, 140779112, 9:16:25 PM"
+  },
+  {
+    "name": "Book from Keks Ukropovish 4",
+    "authorId": 0,
+    "edition": "Some edition",
+    "publicationDate": "Jan 13, 267855674, 11:15:10 PM"
+  },
+  {
+    "name": "Book from Morkovka 1",
+    "authorId": 1,
+    "edition": "Test edition",
+    "publicationDate": "Mar 12, 215867315, 11:28:12 AM"
+  },
+  {
+    "name": "Book from Morkovka 2",
+    "authorId": 1,
+    "edition": "Test edition",
+    "publicationDate": "Jan 15, 65377258, 1:17:34 PM"
+  },
+  {
+    "name": "Book from Morkovka 3",
+    "authorId": 1,
+    "edition": "Test edition",
+    "publicationDate": "Jan 8, 48604115, 12:50:31 AM"
+  },
+  {
+    "name": "Book from Morkovka 4",
+    "authorId": 1,
+    "edition": "Test edition",
+    "publicationDate": "Feb 11, 268185513, 10:39:04 AM"
+  },
+  {
+    "name": "Book from Tolstoi 1",
+    "authorId": 2,
+    "edition": "Edition",
+    "publicationDate": "May 13, 93310334, 4:40:50 AM"
+  },
+  {
+    "name": "Book from Tolstoi 2",
+    "authorId": 2,
+    "edition": "Edition",
+    "publicationDate": "Dec 25, 229657827, 12:11:39 PM"
+  },
+  {
+    "name": "Book from Tolstoi 3",
+    "authorId": 2,
+    "edition": "Edition",
+    "publicationDate": "Jan 21, 21571553, 11:58:05 AM"
+  },
+  {
+    "name": "Book from Tolstoi 4",
+    "authorId": 2,
+    "edition": "Edition",
+    "publicationDate": "Feb 11, 85910028, 6:07:00 AM"
+  },
+  {
+    "name": "Book from Random Author 1",
+    "authorId": 3,
+    "edition": "Random Edition",
+    "publicationDate": "Oct 15, 154643803, 11:57:46 AM"
+  },
+  {
+    "name": "Book from Random Author 2",
+    "authorId": 3,
+    "edition": "Random Edition",
+    "publicationDate": "Mar 8, 36071227, 1:57:29 AM"
+  }
+]
