@@ -16,7 +16,7 @@ dependencies {
 
     testImplementation("junit:junit:4.12")
     testImplementation("org.hamcrest:hamcrest-all:1.3")
-    testImplementation("org.mockito:mockito-core:2.24.0")
+    testImplementation("org.mockito:mockito-core:4.0.0")
 }
 
 task<JavaExec>("startApplication") {

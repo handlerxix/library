@@ -3,7 +3,6 @@ package org.example.demin.controller;
 import com.google.gson.Gson;
 import org.example.demin.models.Book;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -20,18 +19,30 @@ public final class Library {
   @NotNull
   private final Integer capacity;
 
-  public Library(@NotNull Integer capacity, @NotNull Book[] books) {
+  @Inject
+  public Library(@NotNull Integer capacity, @NotNull LibraryFactory factory) throws IOException {
+    final var booksFromFile = factory.library();
+    if (booksFromFile.length > capacity) {
+      throw new IllegalArgumentException(
+          String.format("Unable to initialize library: founded %d books, which is more than max capacity (%d).",
+              booksFromFile.length,
+              capacity
+          ));
+    }
+    final var books = new Book[capacity];
+    IntStream.range(0, booksFromFile.length).forEach(idx -> books[idx] = booksFromFile[idx]);
     this.books = books;
     this.capacity = capacity;
   }
 
-  @Nullable
+  @NotNull
   public Book book(@NotNull Integer index) {
     final var ret = books[index];
     books[index] = null;
-    if (ret != null) {
-      System.out.printf("Book %s was taken from cell #%d%n", ret, index);
+    if (ret == null) {
+      throw new IllegalArgumentException(String.format("Unable to take book: %s cell is empty", index));
     }
+    System.out.printf("Book %s was taken from cell #%d%n", ret, index);
     return ret;
   }
 
@@ -56,29 +67,18 @@ public final class Library {
   public static final class LibraryFactory {
 
     @NotNull
-    private final Path libraryPath;
+    private final Path path;
 
     @Inject
-    public LibraryFactory(@NotNull Path libraryPath) {
-      this.libraryPath = libraryPath;
+    public LibraryFactory(@NotNull Path path) {
+      this.path = path;
     }
 
     @NotNull
-    public Library library(@NotNull Integer capacity) throws IOException {
-      final var folder = libraryPath.toFile();
+    public Book[] library() throws IOException {
+      final var folder = path.toFile();
       final var libContent = Files.readString(folder.toPath());
-      final var gson = new Gson();
-      final var booksFromFolder = gson.fromJson(libContent, Book[].class);
-      if (booksFromFolder.length > capacity) {
-        throw new IllegalStateException(
-            String.format("Unable to initialize library: founded %d books, which is more than max capacity (%d).",
-                booksFromFolder.length,
-                capacity
-            ));
-      }
-      final var books = new Book[capacity];
-      IntStream.range(0, booksFromFolder.length).forEach(idx -> books[idx] = booksFromFolder[idx]);
-      return new Library(capacity, books);
+      return new Gson().fromJson(libContent, Book[].class);
     }
   }
 }
